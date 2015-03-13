@@ -35,7 +35,7 @@ module HackerNews1SelfLib
       source: '1self-hackernews',
       version: '0.0.1',
       objectTags: ['internet', 'social-network', 'hackernews'],
-      actionTags: ['karma', 'publish'],
+      actionTags: ['karma', 'reputation', 'sample'],
       properties: {},
       dateTime: Time.now.utc.iso8601,
       latestSyncField: Time.now.utc.to_i
@@ -46,7 +46,7 @@ module HackerNews1SelfLib
     data[:latestSyncField] = Time.now.utc.to_i
     data[:properties] = {}
     data[:properties][:source] = "1self-hackernews"
-    data[:properties][:karma] = karma
+    data[:properties][:points] = karma
 
     oneself_events << event.merge(data)
     oneself_events
