@@ -20,6 +20,7 @@ end
 
 get '/' do
   session['registrationToken'] = params[:token]
+  session['oneselfUsername'] = params[:username]
   @message = flash[:notice]
   erb :index
 end
@@ -36,7 +37,7 @@ post '/accept' do
     redirect back and return
   end
 
-  stream_resp = HackerNews1SelfLib.register_stream(hn_username, session['registrationToken'], callback_url)
+  stream_resp = HackerNews1SelfLib.register_stream(session['oneselfUsername'], session['registrationToken'], callback_url)
   stream = JSON.parse(stream_resp)
   puts 'Registered stream'
 
