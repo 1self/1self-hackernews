@@ -8,6 +8,10 @@ require_relative './1self_hackernews'
 CALLBACK_BASE_URI = ENV['CALLBACK_BASE_URI'] || 'http://localhost:4567'
 API_BASE_URL = ENV['API_BASE_URL'] || 'http://localhost:5000'
 
+logger = Logger.new(STDOUT)
+
+logger.info('CALLBACK_BASE_URI: ' + CALLBACK_BASE_URI)
+logger.info('API_BASE_URL: ' + API_BASE_URL)
 
 configure do
   enable :sessions, :logging

@@ -1,12 +1,20 @@
 # Foursquare 1self lib
 
+require 'logger'
+
 module HackerNews1SelfLib
 
   extend self
 
-  APP_ID = ENV['APP_ID'] || 'app-id-hn223f557f9cdf57e136dd719c697aea'
-  APP_SECRET = ENV['APP_SECRET'] || 'app-secret-hn0c132e478ca4bd35c87704ca1016d59d8235ef6172d0b507e4c40f5f04503a'
-  API_BASE_URL = ENV['API_BASE_URL'] || 'http://localhost:5000'
+  APP_ID = ENV['APP_ID'] || 'app-id-hackernews'
+  APP_SECRET = ENV['APP_SECRET'] || 'app-secret-hackernews'
+  API_BASE_URL = ENV['API_BASE_URL'] || 'http://api.1self.dev'
+
+  @@logger = Logger.new(STDOUT)
+
+  @@logger.info('APP_ID: ' + APP_ID)
+  @@logger.info('APP_SECRET: ' + APP_SECRET)
+  @@logger.info('API_BASE_URL: ' + API_BASE_URL)
 
   def register_stream(oneself_username, registration_token, callback_url)
     headers =  {Authorization: "#{APP_ID}:#{APP_SECRET}", 'registration-token' => registration_token,
