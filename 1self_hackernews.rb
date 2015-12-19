@@ -40,8 +40,6 @@ module HackerNews1SelfLib
   def convert_to_1self_events(karma)
     oneself_events = []
     event = {
-      source: '1self-hackernews',
-      version: '0.0.1',
       objectTags: ['internet', 'social-network', 'hackernews'],
       actionTags: ['karma', 'reputation', 'sample'],
       properties: {},
@@ -53,8 +51,7 @@ module HackerNews1SelfLib
     data[:dateTime] =  Time.now.utc.iso8601
     data[:latestSyncField] = Time.now.utc.to_i
     data[:properties] = {}
-    data[:properties][:source] = "1self-hackernews"
-    data[:properties][:points] = karma
+    data[:properties][:'latest-karma-points'] = karma
 
     oneself_events << event.merge(data)
     oneself_events
